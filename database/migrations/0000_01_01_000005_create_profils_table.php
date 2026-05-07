@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('profil', function (Blueprint $table) {
+            // Menggunakan UUID sebagai primary key
+            $table->uuid('id')->primary();
+
+            // Kolom dari Yii2
+            $table->string('namaFile')->nullable(); // Menyimpan nama profil/deskripsi
+            $table->string('file')->nullable(); // Menyimpan path/nama file gambar
+            $table->timestamp('tanggalUpload')->nullable(); // Waktu upload
+
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('profil');
+    }
+};
