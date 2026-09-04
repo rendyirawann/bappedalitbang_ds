@@ -1,0 +1,30 @@
+# prevent directory listings
+Options -Indexes
+IndexIgnore */*
+
+# follow symbolic links
+Options FollowSymlinks
+RewriteEngine On
+
+# Admin URL Rewrite
+RewriteRule ^admin(/.+)?$ backend/web/$1 [L,PT]
+
+# Frontend URL Rewrite
+RewriteRule ^(.+)?$ frontend/web/$1 [L]
+
+# ============================================================
+# CSP enforcing - ditambahkan 2026-09-04 (audit keamanan)
+# Menggantikan Content-Security-Policy-Report-Only yang berasal
+# dari /etc/apache2/conf-enabled/security-headers.conf
+#
+# Daftar host di bawah diambil dari inventaris sumber eksternal
+# yang benar-benar dipakai aplikasi ini (Mapbox, unpkg, cdnjs,
+# jsdelivr, Google Fonts) supaya tampilan tidak rusak.
+#
+# Cara membatalkan: hapus blok ini, atau pulihkan file cadangan di
+# /var/www/html/.quarantine/bappedalitbang.htaccess.backup-20260904-210943
+# ============================================================
+<IfModule mod_headers.c>
+    Header always unset Content-Security-Policy-Report-Only
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://code.jquery.com https://stackpath.bootstrapcdn.com https://maxcdn.bootstrapcdn.com https://api.mapbox.com https://code.ionicframework.com https://kit.fontawesome.com https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://www.google.com https://www.gstatic.com https://connect.facebook.net https://platform.twitter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://stackpath.bootstrapcdn.com https://maxcdn.bootstrapcdn.com https://api.mapbox.com https://code.ionicframework.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://stackpath.bootstrapcdn.com; connect-src 'self' https://api.mapbox.com https://events.mapbox.com https://*.tiles.mapbox.com https://api.discogs.com https://www.google-analytics.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com https://www.google.com https://www.facebook.com https://web.facebook.com https://widget.kominfo.go.id; media-src 'self' data: blob: https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+</IfModule>

@@ -1,0 +1,458 @@
+<?php
+
+/** @var yii\web\View $this */
+
+$this->title = 'My Yii Application';
+use yii\helpers\Html;
+use yii\helpers\Url;
+use common\widgets\Alert;
+use frontend\assets\AppAsset;
+use yii\bootstrap5\Breadcrumbs;
+use yii\bootstrap5\Nav;
+use yii\bootstrap5\NavBar;
+
+?>
+
+		<!-- Slider -->
+		<div id="full-slider-wrapper">
+			<div id="layerslider" style="width:100%;height:750px;">
+				<!-- first slide -->
+				<div class="ls-slide" data-ls="slidedelay: 5000; transition2d:85;">
+					<img src="<?= Url::base(true)?>/udema/bappeda/ds-15.jpg" class="ls-bg" alt="Slide background">
+					<h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
+					<p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+					</p>
+					<a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
+				</div>
+				<!-- second slide -->
+				<div class="ls-slide" data-ls="slidedelay:5000; transition2d:103;">
+					<img src="<?= Url::base(true)?>/udema/bappeda/ds.png" class="ls-bg" alt="Slide background">
+					<h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
+					<p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+					</p>
+					<a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
+				</div>
+								<!-- third slide -->
+								<div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
+					<img src="<?= Url::base(true)?>/udema/bappeda/dokrenbang.jpg" class="ls-bg" alt="Slide background">
+					<h3 class="ls-l slide_typo" style="top:47%; left: 50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong>Aplikasi</strong> Dokrenbang</h3>
+					<p class="ls-l slide_typo_2" style="top:55%; left:50%; background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+						Dokumen Perencanaan Pembangunan
+					</p>
+					<a class="ls-l btn_1 rounded" style="top:65%; left:50%;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'>Explore</a>
+				</div>
+								<!-- fourth slide -->
+								<div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
+					<img src="<?= Url::base(true)?>/udema/bappeda/simona.jpg" class="ls-bg" alt="Slide background">
+					<h3 class="ls-l slide_typo" style="top:47%; left: 50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong>Aplikasi</strong> Simona</h3>
+					<p class="ls-l slide_typo_2" style="top:55%; left:50%; background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+						Sistem Monitoring Perencanaan
+					</p>
+					<a class="ls-l btn_1 rounded" style="top:65%; left:50%;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'>Explore</a>
+				</div>
+								<!-- fifth slide -->
+								<div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
+					<img src="<?= Url::base(true)?>/udema/bappeda/ikmds.jpg" class="ls-bg" alt="Slide background">
+					<h3 class="ls-l slide_typo" style="top:47%; left: 50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong>Aplikasi</strong> IKM</h3>
+					<p class="ls-l slide_typo_2" style="top:55%; left:50%;  background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+						Indeks Kepuasan Masyarakat
+					</p>
+					<a class="ls-l btn_1 rounded" style="top:65%; left:50%;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'>Explore</a>
+				</div>
+			</div>
+		</div>
+		<!-- End layerslider -->
+
+		<div class="features clearfix">
+			<div class="container">
+				<div class="row">
+				<div class="col-md-3">
+  <figure class="text-center">
+    <a href="https://dokrenbang.deliserdangkab.go.id/">
+      <img src="<?= Url::base(true)?>/udema/bappeda/icons8-planner-100.png" alt="">
+    </a>
+  </figure>
+  <div class="text-center">
+    <a class="btn btn-primary" href="https://dokrenbang.deliserdangkab.go.id/frontend/web/index.php?r=site%2Findex#pedoman" target="_blank" rel="noreferrer noopener">
+      <strong>RKPD</strong>
+    </a>
+  </div>
+  <p class="text-center small-font-size">Rencana Kerja Pemerintah Daerah</p>
+  <div style="height:20px;" aria-hidden="true" class="spacer"></div>
+</div>
+<div class="col-md-3">
+  <figure class="text-center">
+    <a href="https://dokrenbang.deliserdangkab.go.id/">
+      <img src="<?= Url::base(true)?>/udema/bappeda/icons8-goal-100.png" alt="">
+    </a>
+  </figure>
+  <div class="text-center">
+    <a class="btn btn-primary" href="https://dokrenbang.deliserdangkab.go.id/frontend/web/index.php?r=site%2Findex#pedoman" target="_blank" rel="noreferrer noopener">
+    <strong>RENSTRA</strong>
+    </a>
+  </div>
+  <p class="text-center small-font-size">Rencana Strategis Pemerintah Daerah</p>
+  <div style="height:20px;" aria-hidden="true" class="spacer"></div>
+</div>
+<div class="col-md-3">
+  <figure class="text-center">
+    <a href="https://dokrenbang.deliserdangkab.go.id/">
+    <img src="<?= Url::base(true)?>/udema/bappeda/icons8-document-100.png" alt="">
+    </a>
+  </figure>
+  <div class="text-center">
+    <a class="btn btn-primary" href="https://dokrenbang.deliserdangkab.go.id/frontend/web/index.php?r=site%2Findex#pedoman" target="_blank" rel="noreferrer noopener">
+    <strong>RPJMD</strong>
+    </a>
+  </div>
+  <p class="text-center small-font-size">Rencana Pembangunan Jangka Menengah Pemerintah Daerah</p>
+  <div style="height:20px;" aria-hidden="true" class="spacer"></div>
+</div>
+<div class="col-md-3">
+  <figure class="text-center">
+    <a href="https://dokrenbang.deliserdangkab.go.id/">
+      <img src="<?= Url::base(true)?>/udema/bappeda/icons8-graph-100.png" alt="">
+    </a>
+  </figure>
+  <div class="text-center">
+    <a class="btn btn-primary" href="https://dokrenbang.deliserdangkab.go.id/frontend/web/index.php?r=site%2Findex#pedoman" target="_blank" rel="noreferrer noopener">
+    <strong>RPJPD</strong>
+    </a>
+  </div>
+  <p class="text-center small-font-size">Rencana Pembangunan Jangka Panjang Pemerintah Daerah</p>
+  <div style="height:20px;" aria-hidden="true" class="spacer"></div>
+</div>
+				</div>
+			</div>
+		</div>
+		<!-- /features -->
+
+		<div class="container-fluid margin_120_0">
+			<div class="main_title_2">
+				<span><em></em></span>
+				<h2>Udema Popular Courses</h2>
+				<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+			</div>
+			<div id="reccomended" class="owl-carousel owl-theme">
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="wish_bt"></a>
+							<a href="course-detail.html">
+								<div class="preview"><span>Preview course</span></div><img src="<?= Url::base(true)?>/udema/img/course__list_1.jpg" class="img-fluid" alt=""></a>
+							<div class="price">$39</div>
+
+						</figure>
+						<div class="wrapper">
+							<small>Category</small>
+							<h3>Persius delenit has cu</h3>
+							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
+							<div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 1h 30min</li>
+							<li><i class="icon_like"></i> 890</li>
+							<li><a href="course-detail.html">Enroll now</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /item -->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="wish_bt"></a>
+							<a href="course-detail.html"><img src="<?= Url::base(true)?>/udema/img/course__list_2.jpg" class="img-fluid" alt=""></a>
+							<div class="price">$45</div>
+							<div class="preview"><span>Preview course</span></div>
+						</figure>
+						<div class="wrapper">
+							<small>Category</small>
+							<h3>Persius delenit has cu</h3>
+							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
+							<div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 1h 30min</li>
+							<li><i class="icon_like"></i> 890</li>
+							<li><a href="course-detail.html">Enroll now</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /item -->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="wish_bt"></a>
+							<a href="course-detail.html"><img src="<?= Url::base(true)?>/udema/img/course__list_3.jpg" class="img-fluid" alt=""></a>
+							<div class="price">$54</div>
+							<div class="preview"><span>Preview course</span></div>
+						</figure>
+						<div class="wrapper">
+							<small>Category</small>
+							<h3>Persius delenit has cu</h3>
+							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
+							<div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 1h 30min</li>
+							<li><i class="icon_like"></i> 890</li>
+							<li><a href="course-detail.html">Enroll now</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /item -->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="wish_bt"></a>
+							<a href="course-detail.html"><img src="<?= Url::base(true)?>/udema/img/course__list_4.jpg" class="img-fluid" alt=""></a>
+							<div class="price">$27</div>
+							<div class="preview"><span>Preview course</span></div>
+						</figure>
+						<div class="wrapper">
+							<small>Category</small>
+							<h3>Persius delenit has cu</h3>
+							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
+							<div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 1h 30min</li>
+							<li><i class="icon_like"></i> 890</li>
+							<li><a href="course-detail.html">Enroll now</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /item -->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="wish_bt"></a>
+							<a href="course-detail.html"><img src="<?= Url::base(true)?>/udema/img/course__list_5.jpg" class="img-fluid" alt=""></a>
+							<div class="price">$35</div>
+							<div class="preview"><span>Preview course</span></div>
+						</figure>
+						<div class="wrapper">
+							<small>Category</small>
+							<h3>Persius delenit has cu</h3>
+							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
+							<div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 1h 30min</li>
+							<li><i class="icon_like"></i> 890</li>
+							<li><a href="course-detail.html">Enroll now</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /item -->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="wish_bt"></a>
+							<a href="course-detail.html"><img src="<?= Url::base(true)?>/udema/img/course__list_6.jpg" class="img-fluid" alt=""></a>
+							<div class="price">$54</div>
+							<div class="preview"><span>Preview course</span></div>
+						</figure>
+						<div class="wrapper">
+							<small>Category</small>
+							<h3>Persius delenit has cu</h3>
+							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
+							<div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 1h 30min</li>
+							<li><i class="icon_like"></i> 890</li>
+							<li><a href="course-detail.html">Enroll now</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /item -->
+			</div>
+			<!-- /carousel -->
+			<div class="container">
+				<p class="btn_home_align"><a href="courses-grid.html" class="btn_1 rounded">View all courses</a></p>
+			</div>
+			<!-- /container -->
+			<hr>
+		</div>
+		<!-- /container -->
+
+		<div class="container margin_30_95">
+			<div class="main_title_2">
+				<span><em></em></span>
+				<h2>Udema Categories Courses</h2>
+				<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
+					<a href="#0" class="grid_item">
+						<figure class="block-reveal">
+							<div class="block-horizzontal"></div>
+							<img src="<?= Url::base(true)?>/udema/img/course_1.jpg" class="img-fluid" alt="">
+							<div class="info">
+								<small><i class="ti-layers"></i>15 Programmes</small>
+								<h3>Arts and Humanities</h3>
+							</div>
+						</figure>
+					</a>
+				</div>
+				<!-- /grid_item -->
+				<div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
+					<a href="#0" class="grid_item">
+						<figure class="block-reveal">
+							<div class="block-horizzontal"></div>
+							<img src="<?= Url::base(true)?>/udema/img/course_2.jpg" class="img-fluid" alt="">
+							<div class="info">
+								<small><i class="ti-layers"></i>23 Programmes</small>
+								<h3>Engineering</h3>
+							</div>
+						</figure>
+					</a>
+				</div>
+				<!-- /grid_item -->
+				<div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
+					<a href="#0" class="grid_item">
+						<figure class="block-reveal">
+							<div class="block-horizzontal"></div>
+							<img src="<?= Url::base(true)?>/udema/img/course_3.jpg" class="img-fluid" alt="">
+							<div class="info">
+								<small><i class="ti-layers"></i>23 Programmes</small>
+								<h3>Architecture</h3>
+							</div>
+						</figure>
+					</a>
+				</div>
+				<!-- /grid_item -->
+				<div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
+					<a href="#0" class="grid_item">
+						<figure class="block-reveal">
+							<div class="block-horizzontal"></div>
+							<img src="<?= Url::base(true)?>/udema/img/course_4.jpg" class="img-fluid" alt="">
+							<div class="info">
+								<small><i class="ti-layers"></i>23 Programmes</small>
+								<h3>Science and Biology</h3>
+							</div>
+						</figure>
+					</a>
+				</div>
+				<!-- /grid_item -->
+				<div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
+					<a href="#0" class="grid_item">
+						<figure class="block-reveal">
+							<div class="block-horizzontal"></div>
+							<img src="<?= Url::base(true)?>/udema/img/course_5.jpg" class="img-fluid" alt="">
+							<div class="info">
+								<small><i class="ti-layers"></i>23 Programmes</small>
+								<h3>Law and Criminology</h3>
+							</div>
+						</figure>
+					</a>
+				</div>
+				<!-- /grid_item -->
+				<div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
+					<a href="#0" class="grid_item">
+						<figure class="block-reveal">
+							<div class="block-horizzontal"></div>
+							<img src="<?= Url::base(true)?>/udema/img/course_6.jpg" class="img-fluid" alt="">
+							<div class="info">
+								<small><i class="ti-layers"></i>23 Programmes</small>
+								<h3>Medical</h3>
+							</div>
+						</figure>
+					</a>
+				</div>
+				<!-- /grid_item -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+
+		<div class="bg_color_1">
+			<div class="container margin_120_95">
+				<div class="main_title_2">
+					<span><em></em></span>
+					<h2>News and Events</h2>
+					<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<a class="box_news" href="#0">
+							<figure><img src="<?= Url::base(true)?>/udema/img/news_home_1.jpg" alt="">
+								<figcaption><strong>28</strong>Dec</figcaption>
+							</figure>
+							<ul>
+								<li>Mark Twain</li>
+								<li>20.11.2017</li>
+							</ul>
+							<h4>Pri oportere scribentur eu</h4>
+							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
+						</a>
+					</div>
+					<!-- /box_news -->
+					<div class="col-lg-6">
+						<a class="box_news" href="#0">
+							<figure><img src="<?= Url::base(true)?>/udema/img/news_home_2.jpg" alt="">
+								<figcaption><strong>28</strong>Dec</figcaption>
+							</figure>
+							<ul>
+								<li>Jhon Doe</li>
+								<li>20.11.2017</li>
+							</ul>
+							<h4>Duo eius postea suscipit ad</h4>
+							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
+						</a>
+					</div>
+					<!-- /box_news -->
+					<div class="col-lg-6">
+						<a class="box_news" href="#0">
+							<figure><img src="<?= Url::base(true)?>/udema/img/news_home_3.jpg" alt="">
+								<figcaption><strong>28</strong>Dec</figcaption>
+							</figure>
+							<ul>
+								<li>Luca Robinson</li>
+								<li>20.11.2017</li>
+							</ul>
+							<h4>Elitr mandamus cu has</h4>
+							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
+						</a>
+					</div>
+					<!-- /box_news -->
+					<div class="col-lg-6">
+						<a class="box_news" href="#0">
+							<figure><img src="<?= Url::base(true)?>/udema/img/news_home_4.jpg" alt="">
+								<figcaption><strong>28</strong>Dec</figcaption>
+							</figure>
+							<ul>
+								<li>Paula Rodrigez</li>
+								<li>20.11.2017</li>
+							</ul>
+							<h4>Id est adhuc ignota delenit</h4>
+							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
+						</a>
+					</div>
+					<!-- /box_news -->
+				</div>
+				<!-- /row -->
+				<p class="btn_home_align"><a href="blog.html" class="btn_1 rounded">View all news</a></p>
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /bg_color_1 -->
+
+		<div class="call_section">
+			<div class="container clearfix">
+				<div class="col-lg-5 col-md-6 float-right wow position-relative" data-wow-offset="250">
+					<div class="block-reveal">
+						<div class="block-vertical"></div>
+						<div class="box_1">
+							<h3>Enjoy a great students community</h3>
+							<p>Ius cu tamquam persequeris, eu veniam apeirian platonem qui, id aliquip voluptatibus pri. Ei mea primis ornatus disputationi. Menandri erroribus cu per, duo solet congue ut. </p>
+							<a href="#0" class="btn_1 rounded">Read more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/call_section-->
+
+	<!-- /main -->

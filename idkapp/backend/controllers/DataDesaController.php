@@ -1,0 +1,216 @@
+<?php
+
+namespace backend\controllers;
+
+use Yii;
+use backend\models\DataDesa;
+use backend\models\search\DataDesaSearch;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+use backend\models\UploadDataDesa;
+use yii\web\UploadedFile;
+use PhpOffice\PhpSpreadsheet\Reader\Csv as CsvReader;
+use PhpOffice\PhpSpreadsheet\Writer\Csv as CsvWriter;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use yii\helpers\Url;
+use yii\web\Response;
+use yii\data\ActiveDataProvider;
+use yii\db\Query;
+use yii\db\Expression;
+
+/**
+ * DataDesaController implements the CRUD actions for DataDesa model.
+ */
+class DataDesaController extends Controller
+{
+    /**
+     * @inheritDoc
+     */
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            [
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['POST'],
+                    ],
+                ],
+            ]
+        );
+    }
+
+    /**
+     * Lists all DataDesa models.
+     *
+     * @return string
+     */
+    public function actionIndex()
+    {
+        $searchModel = new DataDesaSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider->pagination = false;
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionPrintAll()
+    {
+        $this->layout = 'cetak';
+        
+        // Ambil data pengguna dari database atau dari sumber lainnya
+        $desas = DataDesa::find()->all();
+        
+        // Render tampilan cetak dan kirim data pengguna ke tampilan tersebut
+        return $this->render('print-all', ['desas' => $desas]);
+    }
+
+
+    /**
+     * Displays a single DataDesa model.
+     * @param int $id ID
+     * @return string
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new DataDesa model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return string|\yii\web\Response
+     */
+    public function actionCreate()
+    {
+        $model = new DataDesa();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Updates an existing DataDesa model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param int $id ID
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionUpload()
+    {
+        $model = new UploadDataDesa();
+
+        if (Yii::$app->request->isPost) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+            $filePath = $model->upload();
+            if ($filePath) {
+                // Load CSV file using PhpSpreadsheet CSV reader
+                $reader = new CsvReader();
+                $reader->setDelimiter(';'); // Set the delimiter to semicolon
+                $spreadsheet = $reader->load($filePath);
+                $worksheet = $spreadsheet->getActiveSheet();
+                $rows = $worksheet->toArray();
+
+                // Iterate through the rows, skipping the header if necessary
+                foreach ($rows as $index => $row) {
+                    if ($index === 0) {
+                        // Skip the header row if present
+                        continue;
+                    }
+
+                    // Trim each row's data to remove unwanted spaces
+                    $row = array_map('trim', $row);
+
+                    $individu = new DataDesa();
+                    $individu->namaDesa = !empty($row[0]) ? $row[0] : null; // Column 6
+                    $individu->kode = !empty($row[1]) ? $row[1] : null; // Column 6
+                    $individu->idKecamatan = !empty($row[2]) ? $row[2] : null; // Column 6
+
+                    if (!$individu->save()) {
+                        // Handle validation errors or log them
+                        Yii::$app->session->setFlash('error', 'Error saving row ' . ($index + 1) . ': ' . implode(', ', $individu->getFirstErrors()));
+                        return $this->render('upload', ['model' => $model]);
+                    }
+                }
+
+                Yii::$app->session->setFlash('success', 'CSV file has been successfully uploaded and data saved to database.');
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('upload', [
+            'model' => $model,
+        ]);
+    }
+
+
+
+
+
+    private function parseDecimal($value)
+    {
+        // Replace commas with periods for decimal values
+        return str_replace(',', '.', $value);
+    }
+
+    /**
+     * Deletes an existing DataDesa model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param int $id ID
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the DataDesa model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param int $id ID
+     * @return DataDesa the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = DataDesa::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+}
