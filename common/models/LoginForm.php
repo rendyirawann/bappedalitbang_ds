@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use common\components\LoginThrottle;
 
 /**
  * Login form
@@ -42,8 +43,18 @@ class LoginForm extends Model
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
+            // Tahan dulu bila IP ini sudah terlalu sering gagal.
+            // Dicek sebelum sandi diperiksa, supaya penebakan sandi
+            // benar-benar berhenti, bukan sekadar diperlambat.
+            if (LoginThrottle::terblokir($this->username)) {
+                $this->addError($attribute, 'Terlalu banyak percobaan login yang gagal. '
+                    . 'Silakan coba lagi sekitar ' . LoginThrottle::sisaMenit($this->username) . ' menit lagi.');
+                return;
+            }
+
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
+                LoginThrottle::catatGagal($this->username);
                 $this->addError($attribute, 'Incorrect username or password.');
             }
         }
@@ -57,9 +68,13 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
+            // Login berhasil: nolkan penghitung supaya pengguna sah yang
+            // sempat salah ketik tidak terbawa hitungan berikutnya.
+            LoginThrottle::bersihkan($this->username);
+
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
-        
+
         return false;
     }
 
