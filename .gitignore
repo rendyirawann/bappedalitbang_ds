@@ -88,3 +88,10 @@ node_modules/
 *.swo
 .env
 
+
+# dump database lokal (berisi data pegawai) - jangan di-commit
+/*.sql
+
+# gambar kerja lokal (Standar Pelayanan, SKM)
+/SP*.png
+/skm*.jpeg
