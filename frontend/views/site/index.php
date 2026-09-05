@@ -26,29 +26,29 @@ use yii\bootstrap5\NavBar;
       <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
     </div>
     <!-- second slide -->
-    <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103;">
+    <!-- <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103;">
       <img src="<?= Url::base(true) ?>/udema/bappeda/ds-new2025_remus.png" class="ls-bg" alt="Slide background">
       <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
       <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
       </p>
       <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
-    </div>
+    </div> -->
     <!-- Thirf Slide -->
-    <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103;">
+    <!-- <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103;">
       <img src="<?= Url::base(true) ?>/udema/bappeda/profil-1.jpeg" class="ls-bg" alt="Slide background">
       <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
       <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
       </p>
       <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
-    </div>
+    </div> -->
     <!-- Fourth Slide -->
-    <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103; bgsize:contain;">
+    <!-- <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103; bgsize:contain;">
       <img src="<?= Url::base(true) ?>/udema/bappeda/profil-2.jpeg" class="ls-bg" alt="Slide background" data-ls="fillmode:fit;">
       <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
       <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
       </p>
       <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
-    </div>
+    </div> -->
     <!-- sixth slide -->
     <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85;">
       <img src="<?= Url::base(true) ?>/udema/bappeda/simona.jpg" class="ls-bg" alt="Slide background">
