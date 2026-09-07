@@ -30,12 +30,16 @@ use yii\bootstrap5\NavBar;
    tidak ada bagian yang terpotong.
 
    Catatan rasio: ketiga banner hero dibuat 2:1, sama dengan kotak
-   slider yang tingginya 50vw, sehingga contain dan cover memberi hasil
-   identik - gambar mengisi penuh dan tidak ada yang terpotong.
-   Foto eSakip aslinya 16:9; versinya yang dipakai di sini
-   (hero-esakip-simona.jpg) sudah dijadikan 2:1 dengan cara menambah
-   lanjutan foto yang diburamkan di kiri-kanan, bukan dengan memotong.
-   Banner baru sebaiknya juga dibuat 2:1 agar seragam.
+   slider yang tingginya 50vw, sehingga gambar mengisi penuh sampai
+   tepi kiri-kanan.
+
+   Dua banner Bupati dan Website memang sudah 2:1 sejak dari desainnya,
+   jadi utuh apa adanya. Foto eSakip aslinya 16:9 (simona.jpg) dan
+   diproses jadi hero-esakip.jpg dengan pemotongan tengah: hilang
+   sekitar 5,5% di atas dan di bawah, tidak ada teks yang terkena
+   karena judul dan tombol slide berasal dari overlay slider.
+
+   Banner baru sebaiknya dibuat langsung 2:1 agar tidak perlu diproses.
 
    Membatalkan: hapus blok <style> ini.
    ------------------------------------------------------------------ */
@@ -101,7 +105,7 @@ use yii\bootstrap5\NavBar;
     </div>
     <!-- hero 3: promo eSakip SIMONALISA (punya tombol "Explore") -->
     <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85; bgsize:contain; bgposition:center center;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/hero-esakip-simona.jpg" class="ls-bg" alt="Aplikasi eSakip SIMONALISA" data-ls="fillmode:fit;">
+      <img src="<?= Url::base(true) ?>/udema/bappeda/hero-esakip.jpg" class="ls-bg" alt="Aplikasi eSakip SIMONALISA" data-ls="fillmode:fit;">
       <h3 class="ls-l slide_typo" style="top:47%; left: 50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong>Aplikasi</strong> eSakip SIMONALISA</h3>
       <p class="ls-l slide_typo_2" style="top:55%; left:50%; background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
         Sistem Akuntabilitas Kinerja Instansi Pemerintah secara elektronik dan Monitoring Analisa
