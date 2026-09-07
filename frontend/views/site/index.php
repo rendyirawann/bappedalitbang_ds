@@ -29,10 +29,13 @@ use yii\bootstrap5\NavBar;
    pakai object-fit:contain supaya seluruh isi gambar terlihat dan
    tidak ada bagian yang terpotong.
 
-   Catatan rasio: dua banner hero berukuran 2:1 sehingga mengisi penuh
-   (tinggi slider memang diatur 50vw). Slide eSakip SIMONALISA
-   berukuran 16:9, jadi akan tampil utuh dengan sedikit ruang kosong
-   di kiri-kanan - konsekuensi dari memilih "tidak terpotong".
+   Catatan rasio: ketiga banner hero dibuat 2:1, sama dengan kotak
+   slider yang tingginya 50vw, sehingga contain dan cover memberi hasil
+   identik - gambar mengisi penuh dan tidak ada yang terpotong.
+   Foto eSakip aslinya 16:9; versinya yang dipakai di sini
+   (hero-esakip-simona.jpg) sudah dijadikan 2:1 dengan cara menambah
+   lanjutan foto yang diburamkan di kiri-kanan, bukan dengan memotong.
+   Banner baru sebaiknya juga dibuat 2:1 agar seragam.
 
    Membatalkan: hapus blok <style> ini.
    ------------------------------------------------------------------ */
@@ -45,12 +48,6 @@ use yii\bootstrap5\NavBar;
   max-height: none !important;
   object-fit: contain !important;
   object-position: center center !important;
-}
-
-/* Ruang kosong di samping slide 16:9 diberi warna senada banner,
-   bukan hitam, supaya tidak terlihat seperti gambar gagal dimuat. */
-#layerslider .ls-slide {
-  background-color: #f4f1ea;
 }
 </style>
 
@@ -104,7 +101,7 @@ use yii\bootstrap5\NavBar;
     </div>
     <!-- hero 3: promo eSakip SIMONALISA (punya tombol "Explore") -->
     <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85; bgsize:contain; bgposition:center center;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/simona.jpg" class="ls-bg" alt="Aplikasi eSakip SIMONALISA" data-ls="fillmode:fit;">
+      <img src="<?= Url::base(true) ?>/udema/bappeda/hero-esakip-simona.jpg" class="ls-bg" alt="Aplikasi eSakip SIMONALISA" data-ls="fillmode:fit;">
       <h3 class="ls-l slide_typo" style="top:47%; left: 50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong>Aplikasi</strong> eSakip SIMONALISA</h3>
       <p class="ls-l slide_typo_2" style="top:55%; left:50%; background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
         Sistem Akuntabilitas Kinerja Instansi Pemerintah secara elektronik dan Monitoring Analisa
