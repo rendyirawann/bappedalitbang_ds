@@ -55,66 +55,51 @@ use yii\bootstrap5\NavBar;
 }
 </style>
 
+<?php
+/* ------------------------------------------------------------------
+   Slider halaman depan - sejak 7 September 2026 isinya diambil dari
+   tabel hero_slider, bukan lagi ditulis satu per satu di berkas ini.
+   Menambah, mengubah, dan menghapus banner dilakukan lewat menu
+   "Banner Halaman Depan" di backend (akun developer dan admin).
+
+   Ukuran gambar sudah diseragamkan menjadi 2400x1200 (2:1) oleh
+   common\components\HeroImage saat diunggah, sehingga cocok dengan
+   tinggi slider 50vw dan tidak pernah terpotong atau ter-zoom.
+
+   Slide tanpa judul ditampilkan sebagai gambar polos - dipakai banner
+   yang tulisannya sudah menyatu di dalam gambar. Slide yang mengisi
+   judul akan mendapat lapisan teks di atas gambarnya, seperti eSakip.
+   ------------------------------------------------------------------ */
+$heroSlides = \common\models\HeroSlider::yangTampil();
+?>
+<?php if (!empty($heroSlides)): ?>
 <!-- Slider -->
 <div id="full-slider-wrapper">
-  <!-- Tinggi dibuat 50vw, bukan 750px tetap, supaya mengikuti rasio banner
-       hero yang 2:1 (2400x1200). Dengan begitu gambar tampil selebar layar
-       dan utuh - tidak terpotong kiri-kanan, tidak pula muncul bidang
-       kosong di samping. Kalau banner diganti dengan rasio lain, sesuaikan
-       nilai ini: tinggi = 100 / (lebar gambar : tinggi gambar) vw. -->
   <div id="layerslider" style="width:100%;height:50vw;">
-    <!-- hero 1: banner Bupati dan Wakil Bupati 2025-2030 -->
+    <?php foreach ($heroSlides as $slide): ?>
     <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85; bgsize:contain; bgposition:center center;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/hero-bupati-2025-2030.jpg" class="ls-bg" alt="Bupati dan Wakil Bupati Kabupaten Deli Serdang periode 2025-2030" data-ls="fillmode:fit;">
-      <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
-      <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
-      </p>
-      <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
+      <img src="<?= Html::encode($slide->urlGambarFrontend()) ?>"
+           class="ls-bg"
+           alt="<?= Html::encode($slide->judul ?: 'Banner Bappedalitbang Deli Serdang') ?>"
+           data-ls="fillmode:fit;">
+
+      <?php if ($slide->punyaTeks()): ?>
+        <h3 class="ls-l slide_typo" style="top:47%; left:50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><?= Html::encode($slide->judul) ?></h3>
+
+        <?php if (!empty($slide->subjudul)): ?>
+          <p class="ls-l slide_typo_2" style="top:55%; left:50%; background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;"><?= Html::encode($slide->subjudul) ?></p>
+        <?php endif; ?>
+
+        <?php if ($slide->punyaTombol()): ?>
+          <a class="ls-l btn_1 rounded" style="top:65%; left:50%; background-color:#4974b1" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href="<?= Html::encode($slide->url_tombol) ?>" target="_blank" rel="noopener noreferrer"><?= Html::encode($slide->teks_tombol) ?></a>
+        <?php endif; ?>
+      <?php endif; ?>
     </div>
-    <!-- second slide -->
-    <!-- <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/ds-new2025_remus.png" class="ls-bg" alt="Slide background">
-      <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
-      <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
-      </p>
-      <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
-    </div> -->
-    <!-- Thirf Slide -->
-    <!-- <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/profil-1.jpeg" class="ls-bg" alt="Slide background">
-      <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
-      <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
-      </p>
-      <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
-    </div> -->
-    <!-- Fourth Slide -->
-    <!-- <div class="ls-slide" data-ls="slidedelay:2500; transition2d:103; bgsize:contain;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/profil-2.jpeg" class="ls-bg" alt="Slide background" data-ls="fillmode:fit;">
-      <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
-      <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
-      </p>
-      <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
-    </div> -->
-    <!-- hero 2: banner website Bappedalitbang -->
-    <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85; bgsize:contain; bgposition:center center;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/hero-kepala-bappedalitbang.jpg" class="ls-bg" alt="Website Bappedalitbang Deli Serdang" data-ls="fillmode:fit;">
-      <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
-      <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
-      </p>
-      <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
-    </div>
-    <!-- hero 3: promo eSakip SIMONALISA (punya tombol "Explore") -->
-    <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85; bgsize:contain; bgposition:center center;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/hero-esakip.jpg" class="ls-bg" alt="Aplikasi eSakip SIMONALISA" data-ls="fillmode:fit;">
-      <h3 class="ls-l slide_typo" style="top:47%; left: 50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong>Aplikasi</strong> eSakip SIMONALISA</h3>
-      <p class="ls-l slide_typo_2" style="top:55%; left:50%; background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
-        Sistem Akuntabilitas Kinerja Instansi Pemerintah secara elektronik dan Monitoring Analisa
-      </p>
-      <a class="ls-l btn_1 rounded" style="top:65%; left:50%; background-color:#4974b1" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='https://esakipsimonalisa.deliserdangkab.go.id/' target="_blank" rel="noopener noreferrer">Explore</a>
-    </div>
+    <?php endforeach; ?>
   </div>
 </div>
 <!-- End layerslider -->
+<?php endif; ?>
 <marquee class="pt-1 pb-1 text-muted bg-light">
   <strong class="text-info d-flex mx-5 gap-5">
     <div style="color: black;">

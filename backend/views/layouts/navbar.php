@@ -95,6 +95,18 @@ $countBeritaReview = \backend\models\Berita::find()
             <span class="nav-link-text">Struktur</span>
           </a>
         </li>
+        <?php /* Pengelolaan banner halaman depan.
+                 Hanya tampil untuk akun developer dan admin - aturan yang
+                 sama persis dipakai controllernya, jadi menyembunyikan menu
+                 di sini bukan satu-satunya pengaman. */ ?>
+        <?php if (\backend\controllers\HeroSliderController::bolehKelola()): ?>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banner Halaman Depan">
+          <a class="nav-link" href="<?= Url::to(['/hero-slider/index']) ?>">
+            <i class="fa fa-fw fa-picture-o"></i>
+            <span class="nav-link-text">Banner Halaman Depan</span>
+          </a>
+        </li>
+        <?php endif; ?>
         <li class="nav-header ms-3">ADMIN MENU</li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
