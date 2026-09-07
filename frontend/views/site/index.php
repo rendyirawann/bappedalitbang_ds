@@ -14,6 +14,46 @@ use yii\bootstrap5\NavBar;
 
 ?>
 
+<style>
+/* ------------------------------------------------------------------
+   Perbaikan tampilan banner hero - 7 September 2026
+
+   Masalah: banner terlihat ter-zoom dan terpotong di kiri-kanan.
+   Penyebabnya LayerSlider menulis sendiri width/height/left/top secara
+   inline pada <img class="ls-bg"> dan ikut menskalakannya mengikuti
+   opsi layersContainer (1200 px, lihat views/layouts/footer.php),
+   sehingga pada layar lebar gambar diperbesar jauh melebihi kotak
+   slider. Opsi bgsize:contain milik plugin tidak mempan menahannya.
+
+   Solusi: kunci gambar latar agar tepat mengisi kotak slide, lalu
+   pakai object-fit:contain supaya seluruh isi gambar terlihat dan
+   tidak ada bagian yang terpotong.
+
+   Catatan rasio: dua banner hero berukuran 2:1 sehingga mengisi penuh
+   (tinggi slider memang diatur 50vw). Slide eSakip SIMONALISA
+   berukuran 16:9, jadi akan tampil utuh dengan sedikit ruang kosong
+   di kiri-kanan - konsekuensi dari memilih "tidak terpotong".
+
+   Membatalkan: hapus blok <style> ini.
+   ------------------------------------------------------------------ */
+#layerslider .ls-slide .ls-bg {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+/* Ruang kosong di samping slide 16:9 diberi warna senada banner,
+   bukan hitam, supaya tidak terlihat seperti gambar gagal dimuat. */
+#layerslider .ls-slide {
+  background-color: #f4f1ea;
+}
+</style>
+
 <!-- Slider -->
 <div id="full-slider-wrapper">
   <!-- Tinggi dibuat 50vw, bukan 750px tetap, supaya mengikuti rasio banner
@@ -62,18 +102,15 @@ use yii\bootstrap5\NavBar;
       </p>
       <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
     </div>
-    <!-- Slide promo eSakip SIMONALISA - dinonaktifkan 2026-09-07 saat hero
-         diganti dua banner baru. Slide ini punya tombol "Explore" ke
-         esakipsimonalisa.deliserdangkab.go.id; hapus tanda komentar
-         di bawah bila ingin ditampilkan lagi. -->
-    <!-- <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/simona.jpg" class="ls-bg" alt="Slide background">
+    <!-- hero 3: promo eSakip SIMONALISA (punya tombol "Explore") -->
+    <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85; bgsize:contain; bgposition:center center;">
+      <img src="<?= Url::base(true) ?>/udema/bappeda/simona.jpg" class="ls-bg" alt="Aplikasi eSakip SIMONALISA" data-ls="fillmode:fit;">
       <h3 class="ls-l slide_typo" style="top:47%; left: 50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong>Aplikasi</strong> eSakip SIMONALISA</h3>
       <p class="ls-l slide_typo_2" style="top:55%; left:50%; background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
         Sistem Akuntabilitas Kinerja Instansi Pemerintah secara elektronik dan Monitoring Analisa
       </p>
       <a class="ls-l btn_1 rounded" style="top:65%; left:50%; background-color:#4974b1" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='https://esakipsimonalisa.deliserdangkab.go.id/' target="_blank" rel="noopener noreferrer">Explore</a>
-    </div> -->
+    </div>
   </div>
 </div>
 <!-- End layerslider -->
