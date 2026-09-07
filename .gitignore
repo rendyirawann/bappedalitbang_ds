@@ -88,10 +88,18 @@ node_modules/
 *.swo
 .env
 
-
 # dump database lokal (berisi data pegawai) - jangan di-commit
 /*.sql
 
 # gambar kerja lokal (Standar Pelayanan, SKM)
 /SP*.png
 /skm*.jpeg
+
+# --- Gambar sumber mentah di root proyek ---
+# Berkas seperti 1.png / 2.png adalah bahan mentah banner (beberapa MB
+# per berkas) yang sudah dikompres ke frontend/web/udema/bappeda/.
+# Versi terkompres itulah yang dipakai situs dan masuk repo.
+/[0-9].png
+/[0-9].jpg
+/[0-9][0-9].png
+/[0-9][0-9].jpg

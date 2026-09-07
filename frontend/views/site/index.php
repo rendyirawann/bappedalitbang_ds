@@ -16,10 +16,15 @@ use yii\bootstrap5\NavBar;
 
 <!-- Slider -->
 <div id="full-slider-wrapper">
-  <div id="layerslider" style="width:100%;height:750px;">
-    <!-- first slide -->
-    <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85;">
-      <img src="<?= Url::base(true) ?>/udema/bappeda/ds-new2025_bupati.png" class="ls-bg" alt="Slide background">
+  <!-- Tinggi dibuat 50vw, bukan 750px tetap, supaya mengikuti rasio banner
+       hero yang 2:1 (2400x1200). Dengan begitu gambar tampil selebar layar
+       dan utuh - tidak terpotong kiri-kanan, tidak pula muncul bidang
+       kosong di samping. Kalau banner diganti dengan rasio lain, sesuaikan
+       nilai ini: tinggi = 100 / (lebar gambar : tinggi gambar) vw. -->
+  <div id="layerslider" style="width:100%;height:50vw;">
+    <!-- hero 1: banner Bupati dan Wakil Bupati 2025-2030 -->
+    <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85; bgsize:contain; bgposition:center center;">
+      <img src="<?= Url::base(true) ?>/udema/bappeda/hero-bupati-2025-2030.jpg" class="ls-bg" alt="Bupati dan Wakil Bupati Kabupaten Deli Serdang periode 2025-2030" data-ls="fillmode:fit;">
       <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
       <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
       </p>
@@ -49,15 +54,26 @@ use yii\bootstrap5\NavBar;
       </p>
       <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
     </div> -->
-    <!-- sixth slide -->
-    <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85;">
+    <!-- hero 2: banner website Bappedalitbang -->
+    <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85; bgsize:contain; bgposition:center center;">
+      <img src="<?= Url::base(true) ?>/udema/bappeda/hero-kepala-bappedalitbang.jpg" class="ls-bg" alt="Website Bappedalitbang Deli Serdang" data-ls="fillmode:fit;">
+      <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong></strong></h3>
+      <p class="ls-l slide_typo_2" style="top:55%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+      </p>
+      <a class="ls-l" style="top:65%; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='courses-grid.html'></a>
+    </div>
+    <!-- Slide promo eSakip SIMONALISA - dinonaktifkan 2026-09-07 saat hero
+         diganti dua banner baru. Slide ini punya tombol "Explore" ke
+         esakipsimonalisa.deliserdangkab.go.id; hapus tanda komentar
+         di bawah bila ingin ditampilkan lagi. -->
+    <!-- <div class="ls-slide" data-ls="slidedelay: 2500; transition2d:85;">
       <img src="<?= Url::base(true) ?>/udema/bappeda/simona.jpg" class="ls-bg" alt="Slide background">
       <h3 class="ls-l slide_typo" style="top:47%; left: 50%; background-color:black;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><strong>Aplikasi</strong> eSakip SIMONALISA</h3>
       <p class="ls-l slide_typo_2" style="top:55%; left:50%; background-color:black;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
         Sistem Akuntabilitas Kinerja Instansi Pemerintah secara elektronik dan Monitoring Analisa
       </p>
       <a class="ls-l btn_1 rounded" style="top:65%; left:50%; background-color:#4974b1" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='https://esakipsimonalisa.deliserdangkab.go.id/' target="_blank" rel="noopener noreferrer">Explore</a>
-    </div>
+    </div> -->
   </div>
 </div>
 <!-- End layerslider -->
